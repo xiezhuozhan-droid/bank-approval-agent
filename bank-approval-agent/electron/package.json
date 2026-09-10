@@ -1,0 +1,35 @@
+{
+  "name": "bank-approval-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "银行信贷审批智能 Agent — Electron 桌面封装",
+  "main": "src/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.bank.approval.agent",
+    "productName": "BankApprovalAgent",
+    "files": [
+      "src/**/*",
+      "../server/dist/**/*",
+      "../server/node_modules/**/*",
+      "../server/package.json",
+      "../client/dist/**/*"
+    ],
+    "directories": {
+      "output": "../release"
+    },
+    "linux": { "target": ["AppImage", "deb"], "category": "Office" },
+    "win": { "target": ["nsis"] },
+    "mac": { "target": ["dmg"], "category": "public.app-category.finance" }
+  }
+}

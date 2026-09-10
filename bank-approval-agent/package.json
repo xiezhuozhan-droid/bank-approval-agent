@@ -1,0 +1,23 @@
+{
+  "name": "bank-approval-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "银行信贷审批智能 Agent — 对公/零售审批、四部门职责边界、产品方案(基于 CodeBuddy Agent SDK)",
+  "type": "module",
+  "workspaces": [
+    "server",
+    "client",
+    "electron"
+  ],
+  "scripts": {
+    "dev:web": "concurrently -k -n SERVER,CLIENT -c blue,green \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client && npm run build -w server",
+    "build:web": "npm run build -w client && npm run build -w server",
+    "dev": "npm run build -w server && npm run start -w electron",
+    "start": "npm run start -w server",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
